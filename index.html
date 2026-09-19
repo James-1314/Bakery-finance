@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4b2f20">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="面包店财务">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="适合手机使用的面包店财务健康、利润、成本、现金和月度报表工具">
+<title>面包店财务工具｜手机单机版</title>
+<style>
+:root{--brown:#4b2f20;--gold:#e9a62a;--cream:#fff8eb;--bg:#f4f1eb;--card:#fff;--text:#29231f;--muted:#827970;--line:#ece3d7;--green:#18885d;--yellow:#d08a00;--red:#d1483f;--blue:#3974cc;--shadow:0 8px 24px rgba(68,45,28,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.app{max-width:520px;margin:auto;min-height:100vh;background:#faf8f4;padding-bottom:88px}.top{background:linear-gradient(135deg,#422719,#795034);color:white;padding:20px 18px 24px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--brown);font-size:20px;font-weight:900}.top h1{font-size:20px;margin:0}.top p{font-size:11px;color:#eadccc;margin:4px 0 0}.period{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:9px}.period label{font-size:10px;color:#dac6b4}.period input{width:100%;margin-top:4px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;border-radius:10px;padding:9px;color-scheme:dark}.page{display:none;padding:14px}.page.active{display:block}.health{margin-top:-12px;background:#fff;border-radius:20px;padding:17px;box-shadow:var(--shadow)}.health-row{display:flex;align-items:center;justify-content:space-between}.score-ring{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0deg,var(--green) 270deg,#eee 270deg);position:relative}.score-ring:after{content:"";position:absolute;width:66px;height:66px;border-radius:50%;background:#fff}.score-ring div{position:relative;z-index:1;text-align:center}.score-ring strong{font-size:25px;display:block}.score-ring small{font-size:9px;color:#888}.health-text{flex:1;padding-left:16px}.health-text h2{margin:0 0 5px;font-size:18px}.health-text p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}.status{display:inline-block;border-radius:999px;padding:4px 9px;font-size:10px;font-weight:700;margin-top:8px}.status.green{background:#e8f7f0;color:var(--green)}.status.yellow{background:#fff4d4;color:var(--yellow)}.status.red{background:#ffebe9;color:var(--red)}.section{background:#fff;margin-top:13px;border-radius:18px;padding:16px;box-shadow:var(--shadow)}.section h3{font-size:16px;margin:0 0 3px}.hint{font-size:10px;color:var(--muted);margin-bottom:13px;line-height:1.5}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:11px;color:#655d56;margin:0 0 5px}.box{display:flex;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff}.box:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(233,166,42,.12)}.box span{min-width:34px;display:grid;place-items:center;background:#faf6ef;color:#8a7f74;font-size:11px}.box input{width:100%;min-width:0;border:0;outline:0;padding:11px 8px;background:transparent;font-size:14px}.full{grid-column:1/-1}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.metric{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fffcf7}.metric small{font-size:10px;color:var(--muted)}.metric strong{display:block;font-size:19px;margin:5px 0 2px}.metric em{font-style:normal;font-size:9px;color:#a0978e}.green-text{color:var(--green)}.red-text{color:var(--red)}.blue-text{color:var(--blue)}.bar-item{margin-top:13px}.bar-head{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px}.bar{height:9px;border-radius:99px;background:#eee7dc;overflow:hidden}.bar i{display:block;height:100%;border-radius:99px;background:var(--green);width:0;transition:.25s}.advice{padding:11px 12px;border-radius:12px;margin-top:8px;font-size:11px;line-height:1.55}.advice.good{background:#eaf7f1;color:#176c4c}.advice.warn{background:#fff5df;color:#8a5b00}.advice.bad{background:#ffedeb;color:#9d332d}.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 15px;font-weight:700;cursor:pointer}.primary{background:linear-gradient(90deg,#f07b28,#e8aa2d);color:#fff}.secondary{background:#eee7dd;color:var(--brown)}.danger{background:#fff0ee;color:var(--red)}.records{width:100%;border-collapse:collapse;min-width:650px}.records th,.records td{padding:10px 7px;border-bottom:1px solid #eee;text-align:right;font-size:11px}.records th:first-child,.records td:first-child{text-align:left}.scroll{overflow:auto}.empty{text-align:center;color:#999;padding:32px}.note{font-size:10px;color:#8d847b;line-height:1.6;background:#f8f4ed;padding:11px;border-radius:11px;margin-top:12px}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,520px);height:72px;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);z-index:10;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom)}.bottom button{border:0;background:transparent;color:#978e85;font-size:11px}.bottom i{display:block;font-style:normal;font-size:21px;margin-bottom:3px}.bottom button.active{color:#c87800;font-weight:700}.toast{position:fixed;left:50%;top:15%;transform:translate(-50%,-7px);background:rgba(35,29,25,.92);color:white;padding:10px 16px;border-radius:999px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){body{padding:20px}.app{border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.12)}.bottom{bottom:20px;border-radius:0 0 24px 24px}}
+
+.report-filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.report-filters select{border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}.report-summary{display:grid;grid-template-columns:1fr 1fr;gap:9px}.report-kpi{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fffcf7}.report-kpi small{font-size:10px;color:var(--muted)}.report-kpi strong{display:block;font-size:18px;margin-top:5px}.chart-box{margin-top:13px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:9px;overflow:hidden}.chart-title{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 8px}.chart-title b{font-size:13px}.legend{display:flex;gap:10px;font-size:9px;color:#777}.legend span:before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}.legend .sales:before{background:#e9a62a}.legend .profit:before{background:#3974cc;border-radius:50%}.chart-wrap{position:relative;width:100%;height:280px}.chart-wrap canvas{width:100%;height:100%;display:block}.monthly-table{width:100%;border-collapse:collapse;min-width:620px}.monthly-table th,.monthly-table td{padding:10px 7px;border-bottom:1px solid #eee;text-align:right;font-size:11px}.monthly-table th:first-child,.monthly-table td:first-child{text-align:left}.trend-up{color:var(--green)}.trend-down{color:var(--red)}.report-empty{padding:38px 12px;text-align:center;color:#999;font-size:12px}.bottom.four{grid-template-columns:repeat(4,1fr)}
+
+.offline-banner{margin:12px 14px 0;padding:10px 12px;border-radius:12px;background:#eaf7f1;color:#176c4c;font-size:11px;line-height:1.5;border:1px solid #ccebdd}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">麦</div><div><h1>面包店财务工具</h1><p>手机单机版 · 无需登录 · 数据仅保存在本机</p></div></div><div class="period"><div><label>统计周期开始</label><input id="startDate" type="date"></div><div><label>统计周期结束</label><input id="endDate" type="date"></div></div></header>
+<div class="offline-banner"><b>离线单机版：</b>无需注册或登录，不连接 Microsoft、微信或其他云服务。历史记录保存在当前手机浏览器中，请定期导出 CSV 备份。</div>
+
+<main id="dashboard" class="page active">
+<section class="health"><div class="health-row"><div class="score-ring" id="scoreRing"><div><strong id="score">0</strong><small>健康分</small></div></div><div class="health-text"><h2 id="healthTitle">等待录入数据</h2><p id="healthDesc">录入本期营业、成本和现金数据后，将自动评估门店财务健康状况。</p><span class="status yellow" id="healthStatus">待评估</span></div></div></section>
+<section class="section"><h3>收入与客流</h3><div class="hint">充值不直接计入营业收入，会员实际消费时才计入。</div><div class="grid">
+<div class="field"><label>商品销售收入</label><div class="box"><span>¥</span><input id="sales" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>会员余额消费</label><div class="box"><span>¥</span><input id="memberSales" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>退款</label><div class="box"><span>-¥</span><input id="refunds" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>订单数量</label><div class="box"><span>单</span><input id="orders" type="number" min="0" step="1" value="0"></div></div>
+</div></section>
+<section class="section"><h3>成本与费用</h3><div class="hint">将固定费用按统计周期分摊填写。</div><div class="grid">
+<div class="field"><label>原料与商品成本</label><div class="box"><span>¥</span><input id="materials" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>包装耗材</label><div class="box"><span>¥</span><input id="packaging" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>人工成本</label><div class="box"><span>¥</span><input id="labor" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>房租</label><div class="box"><span>¥</span><input id="rent" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>水电燃气</label><div class="box"><span>¥</span><input id="utilities" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>平台/营销费用</label><div class="box"><span>¥</span><input id="marketing" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field full"><label>其他费用</label><div class="box"><span>¥</span><input id="other" type="number" min="0" step="0.01" value="0"></div></div>
+</div></section>
+<section class="section"><h3>现金与会员充值</h3><div class="hint">可用现金包括银行和收银备用金；会员未消费余额是未来需要履约的责任。</div><div class="grid">
+<div class="field"><label>期初可用现金</label><div class="box"><span>¥</span><input id="openCash" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>本期现金销售收款</label><div class="box"><span>¥</span><input id="cashCollected" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>会员充值实收</label><div class="box"><span>¥</span><input id="recharge" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field"><label>充值赠送金额</label><div class="box"><span>¥</span><input id="gift" type="number" min="0" step="0.01" value="0"></div></div>
+<div class="field full"><label>当前会员未消费余额</label><div class="box"><span>¥</span><input id="memberLiability" type="number" min="0" step="0.01" value="0"></div></div>
+</div></section>
+<section class="section"><h3>核心财务指标</h3><div class="metrics">
+<div class="metric"><small>净营业收入</small><strong id="mRevenue">¥0.00</strong><em>销售 + 余额消费 - 退款</em></div>
+<div class="metric"><small>毛利润</small><strong id="mGross">¥0.00</strong><em>收入减直接成本</em></div>
+<div class="metric"><small>净利润</small><strong id="mProfit">¥0.00</strong><em>毛利减经营费用</em></div>
+<div class="metric"><small>预计期末现金</small><strong id="mCash">¥0.00</strong><em>含充值现金流</em></div>
+<div class="metric"><small>毛利率</small><strong id="mGrossRate">0.0%</strong><em>建议结合产品结构判断</em></div>
+<div class="metric"><small>净利率</small><strong id="mNetRate">0.0%</strong><em>门店最终盈利能力</em></div>
+<div class="metric"><small>客单价</small><strong id="mAov">¥0.00</strong><em>收入 ÷ 订单数量</em></div>
+<div class="metric"><small>盈亏平衡营业额</small><strong id="mBreakEven">¥0.00</strong><em>覆盖固定经营费用</em></div>
+<div class="metric"><small>现金覆盖月数</small><strong id="mRunway">0.0</strong><em>现金可覆盖固定费用月数</em></div>
+<div class="metric"><small>充值赠送率</small><strong id="mGiftRate">0.0%</strong><em>赠送金额 ÷ 充值实收</em></div>
+</div>
+<div class="bar-item"><div class="bar-head"><span>原料及包装成本率</span><b id="costRateText">0.0%</b></div><div class="bar"><i id="costBar"></i></div></div>
+<div class="bar-item"><div class="bar-head"><span>人工成本率</span><b id="laborRateText">0.0%</b></div><div class="bar"><i id="laborBar"></i></div></div>
+<div id="adviceList"></div>
+</section>
+<section class="section"><div class="field" style="margin-bottom:12px"><label>经营备注</label><div class="box"><input id="notes" placeholder="例如：节假日促销、天气、团购订单"></div></div><div class="buttons"><button class="btn primary" onclick="saveRecord()">保存本期记录</button><button class="btn secondary" onclick="resetForm()">清空</button></div><div class="note">提示：本工具用于经营管理测算，不替代正式会计记账、税务申报或专业财务意见。健康阈值为通用经营参考，可根据门店实际调整。</div></section>
+</main>
+
+<main id="records" class="page"><section class="section"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><h3>历史记录</h3><div class="hint">数据保存在当前手机浏览器中。</div></div><div class="buttons"><button class="btn secondary" onclick="exportCSV()">导出CSV</button><button class="btn danger" onclick="clearRecords()">全部清空</button></div></div><div class="scroll"><table class="records"><thead><tr><th>周期</th><th>收入</th><th>净利润</th><th>净利率</th><th>期末现金</th><th>健康分</th><th>操作</th></tr></thead><tbody id="recordBody"></tbody></table></div></section></main>
+
+
+<main id="report" class="page">
+<section class="section"><div class="chart-title"><div><h3>月度经营报表</h3><div class="hint">根据历史记录自动按月份汇总销售、成本和利润。</div></div></div>
+<div class="report-filters"><label style="font-size:11px;color:#655d56">显示年份</label><select id="reportYear" onchange="renderMonthlyReport()"></select><button class="btn secondary" onclick="exportMonthlyCSV()">导出月报CSV</button></div>
+<div class="report-summary"><div class="report-kpi"><small>年度累计销售</small><strong id="yearSales">¥0.00</strong></div><div class="report-kpi"><small>年度累计利润</small><strong id="yearProfit">¥0.00</strong></div><div class="report-kpi"><small>年度平均净利率</small><strong id="yearMargin">0.0%</strong></div><div class="report-kpi"><small>最佳月份</small><strong id="bestMonth">暂无</strong></div></div>
+<div class="chart-box"><div class="chart-title"><b>每月销售与利润趋势</b><div class="legend"><span class="sales">销售额</span><span class="profit">净利润</span></div></div><div class="chart-wrap"><canvas id="monthlyChart"></canvas></div></div>
+<div id="reportAdvice"></div>
+</section>
+<section class="section"><h3>月度明细</h3><div class="hint">销售和成本以保存记录的统计周期结束月份归集。</div><div class="scroll"><table class="monthly-table"><thead><tr><th>月份</th><th>销售额</th><th>总成本</th><th>净利润</th><th>净利率</th><th>环比销售</th><th>健康分</th></tr></thead><tbody id="monthlyBody"></tbody></table></div><div class="note">为避免重复汇总，请不要同时保存相互重叠的日报、周报和月报。例如已逐日保存后，不要再把同一月份作为一条完整月度记录重复保存。</div></section>
+</main>
+<main id="guide" class="page"><section class="section"><h3>手机快捷方式</h3><div class="note">iPhone：使用 Safari 打开后，点击“分享” → “添加到主屏幕”。安卓：使用 Chrome 或 Edge 打开后，点击菜单 → “添加到主屏幕”。建议固定使用同一个浏览器，以保留历史数据。</div></section><section class="section"><h3>健康判断逻辑</h3><div class="hint">以下为内置的简化经营参考。</div><div id="guideContent" style="font-size:12px;line-height:1.9;color:#615950">
+<p><b>利润：</b>净利润为正是基本条件；净利率越高，抗波动能力通常越强。</p>
+<p><b>直接成本：</b>原料与包装成本率过高，会直接压缩毛利，需要检查采购价格、损耗和售价。</p>
+<p><b>人工成本：</b>人工成本率过高，可能代表排班、产能或营业额不足。</p>
+<p><b>现金：</b>预计期末现金应足以覆盖至少1至3个月固定费用。现金不足时，即使账面盈利也可能出现周转风险。</p>
+<p><b>会员余额：</b>充值现金不是即时利润；会员未消费余额代表未来提供商品或退款的责任。</p>
+<p><b>盈亏平衡点：</b>当营业额低于盈亏平衡营业额时，需要提高销量、客单价或降低固定费用。</p>
+</div></section><section class="section"><h3>手机使用建议</h3><div class="note">可以直接下载到手机后使用浏览器打开；如浏览器支持，也可以选择“添加到主屏幕”。固定使用同一浏览器，并定期导出CSV，避免清理浏览器数据导致记录丢失。</div></section></main>
+
+<nav class="bottom four"><button class="active" onclick="go('dashboard',this)"><i>📊</i>财务概览</button><button onclick="go('records',this)"><i>📒</i>历史记录</button><button onclick="go('report',this)"><i>📈</i>月度报表</button><button onclick="go('guide',this)"><i>💡</i>指标说明</button></nav>
+</div><div class="toast" id="toast"></div>
+<script>
+const inputIds=['sales','memberSales','refunds','orders','materials','packaging','labor','rent','utilities','marketing','other','openCash','cashCollected','recharge','gift','memberLiability'];
+const n=id=>Math.max(0,Number(document.getElementById(id).value)||0);
+const money=v=>'¥'+Number(v||0).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
+function dates(){const d=new Date(),z=x=>String(x).padStart(2,'0'),end=d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());const s=new Date(d);s.setDate(1);return[s.getFullYear()+'-'+z(s.getMonth()+1)+'-01',end]}
+function calculate(){
+ const revenue=n('sales')+n('memberSales')-n('refunds');
+ const direct=n('materials')+n('packaging');
+ const fixed=n('labor')+n('rent')+n('utilities')+n('marketing')+n('other');
+ const totalCost=direct+fixed,gross=revenue-direct,profit=revenue-totalCost;
+ const grossRate=revenue?gross/revenue*100:0,netRate=revenue?profit/revenue*100:0;
+ const directRate=revenue?direct/revenue*100:0,laborRate=revenue?n('labor')/revenue*100:0;
+ const contributionRate=revenue?Math.max(0,(revenue-direct)/revenue):0;
+ const breakEven=contributionRate?fixed/contributionRate:0;
+ const cash=n('openCash')+n('cashCollected')+n('recharge')-totalCost-n('refunds');
+ const monthlyFixed=fixed; const runway=monthlyFixed?Math.max(0,cash)/monthlyFixed:0;
+ const aov=n('orders')?revenue/n('orders'):0,giftRate=n('recharge')?n('gift')/n('recharge')*100:0;
+ let score=0;
+ score += profit>0 ? (netRate>=10?25:netRate>=5?20:15) : 0;
+ score += grossRate>=60?20:grossRate>=50?16:grossRate>=40?10:4;
+ score += directRate<=35?15:directRate<=45?10:directRate<=55?5:0;
+ score += laborRate<=25?15:laborRate<=35?9:laborRate<=45?4:0;
+ score += runway>=3?15:runway>=1?10:runway>0?5:0;
+ score += cash>=n('memberLiability')*.3?10:cash>0?5:0;
+ score=Math.max(0,Math.min(100,Math.round(score)));
+ const result={revenue,direct,fixed,totalCost,gross,profit,grossRate,netRate,directRate,laborRate,breakEven,cash,runway,aov,giftRate,score};
+ render(result);return result;
+}
+function render(v){
+ const pairs={mRevenue:v.revenue,mGross:v.gross,mProfit:v.profit,mCash:v.cash,mAov:v.aov,mBreakEven:v.breakEven};Object.entries(pairs).forEach(([id,val])=>document.getElementById(id).textContent=money(val));
+ document.getElementById('mGrossRate').textContent=v.grossRate.toFixed(1)+'%';document.getElementById('mNetRate').textContent=v.netRate.toFixed(1)+'%';document.getElementById('mRunway').textContent=v.runway.toFixed(1)+' 月';document.getElementById('mGiftRate').textContent=v.giftRate.toFixed(1)+'%';
+ document.getElementById('costRateText').textContent=v.directRate.toFixed(1)+'%';document.getElementById('laborRateText').textContent=v.laborRate.toFixed(1)+'%';
+ setBar('costBar',v.directRate,35,45);setBar('laborBar',v.laborRate,25,35);
+ document.getElementById('mProfit').className=v.profit>=0?'green-text':'red-text';document.getElementById('mCash').className=v.cash>=0?'blue-text':'red-text';
+ document.getElementById('score').textContent=v.score;let color='#18885d',title='财务状况健康',desc='利润、成本和现金指标整体处于可控范围。',cls='green',status='健康';if(v.score<60){color='#d1483f';title='财务风险较高';desc='存在利润、成本或现金方面的明显风险，请优先查看下方建议。';cls='red';status='需改善'}else if(v.score<80){color='#d08a00';title='财务状况一般';desc='门店可以维持经营，但部分指标需要持续改善。';cls='yellow';status='关注'}
+ document.getElementById('scoreRing').style.background=`conic-gradient(${color} 0deg,${color} ${v.score*3.6}deg,#eee ${v.score*3.6}deg)`;document.getElementById('healthTitle').textContent=title;document.getElementById('healthDesc').textContent=desc;const st=document.getElementById('healthStatus');st.textContent=status;st.className='status '+cls;
+ const adv=[];if(v.profit<=0)adv.push(['bad','门店本期亏损。优先检查售价、销量、原料损耗和固定费用。']);else if(v.netRate<5)adv.push(['warn','净利率偏低，抗淡季和突发费用的能力有限。']);else adv.push(['good','本期实现盈利，继续关注利润是否来自稳定主营业务。']);if(v.directRate>45)adv.push(['bad','原料及包装成本率偏高，建议检查采购、配方、报损和定价。']);if(v.laborRate>35)adv.push(['warn','人工成本率偏高，建议优化排班与高峰时段产能。']);if(v.runway<1)adv.push(['bad','现金不足以覆盖一个周期固定费用，存在周转风险。']);else if(v.runway<3)adv.push(['warn','现金安全垫偏薄，建议逐步建立至少3个月固定费用储备。']);else adv.push(['good','现金储备相对充足，可覆盖至少3个月本期固定费用。']);if(n('memberLiability')>v.cash)adv.push(['warn','会员未消费余额高于可用现金，需要预留履约和退款资金。']);if(v.giftRate>20)adv.push(['warn','充值赠送率超过20%，需确认毛利能否覆盖未来兑换成本。']);document.getElementById('adviceList').innerHTML=adv.map(a=>`<div class="advice ${a[0]}">${a[1]}</div>`).join('');
+}
+function setBar(id,val,good,warn){const e=document.getElementById(id);e.style.width=Math.min(100,val)+'%';e.style.background=val<=good?'#18885d':val<=warn?'#d08a00':'#d1483f'}
+function snapshot(){const inputs={};inputIds.forEach(id=>inputs[id]=document.getElementById(id).value);const v=calculate();return{id:Date.now(),start:document.getElementById('startDate').value,end:document.getElementById('endDate').value,notes:document.getElementById('notes').value,inputs,...v}}
+function records(){try{return JSON.parse(localStorage.getItem('bakery_health_records')||'[]')}catch(e){return[]}}
+function saveRecord(){const r=snapshot(),all=records();all.unshift(r);localStorage.setItem('bakery_health_records',JSON.stringify(all));renderRecords();toast('本期财务记录已保存')}
+function renderRecords(){const all=records(),body=document.getElementById('recordBody');body.innerHTML=all.length?all.map(r=>`<tr><td>${r.start||''}<br>至 ${r.end||''}</td><td>${money(r.revenue)}</td><td style="color:${r.profit>=0?'#18885d':'#d1483f'}">${money(r.profit)}</td><td>${Number(r.netRate||0).toFixed(1)}%</td><td>${money(r.cash)}</td><td>${r.score}</td><td><button class="btn secondary" style="padding:7px 10px" onclick="loadRecord(${r.id})">载入</button> <button class="btn danger" style="padding:7px 10px" onclick="deleteRecord(${r.id})">删除</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">暂无历史记录</td></tr>'}
+function loadRecord(id){const r=records().find(x=>x.id===id);if(!r)return;inputIds.forEach(k=>document.getElementById(k).value=r.inputs[k]||0);document.getElementById('startDate').value=r.start;document.getElementById('endDate').value=r.end;document.getElementById('notes').value=r.notes||'';calculate();go('dashboard',document.querySelector('.bottom button'));toast('历史记录已载入')}
+function deleteRecord(id){if(!confirm('确定删除这条记录吗？'))return;localStorage.setItem('bakery_health_records',JSON.stringify(records().filter(x=>x.id!==id)));renderRecords()}
+function clearRecords(){if(!confirm('确定清空全部历史记录吗？'))return;localStorage.removeItem('bakery_health_records');renderRecords()}
+function resetForm(){if(!confirm('确定清空当前输入吗？'))return;inputIds.forEach(id=>document.getElementById(id).value=0);document.getElementById('notes').value='';calculate()}
+function exportCSV(){const all=records();if(!all.length){toast('暂无记录可导出');return}const rows=[['开始日期','结束日期','净营业收入','总成本','净利润','毛利率','净利率','预计期末现金','现金覆盖月数','健康分','备注'],...all.map(r=>[r.start,r.end,r.revenue,r.totalCost,r.profit,r.grossRate,r.netRate,r.cash,r.runway,r.score,r.notes||''])];const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='面包店财务健康记录.csv';a.click();URL.revokeObjectURL(a.href)}
+
+function monthKey(record){const d=record.end||record.start||'';return d.slice(0,7)}
+function monthlyData(year){const map={};records().forEach(r=>{const key=monthKey(r);if(!key||!key.startsWith(year+'-'))return;if(!map[key])map[key]={month:key,sales:0,cost:0,profit:0,scoreSum:0,count:0};map[key].sales+=Number(r.revenue)||0;map[key].cost+=Number(r.totalCost)||0;map[key].profit+=Number(r.profit)||0;map[key].scoreSum+=Number(r.score)||0;map[key].count++});return Array.from({length:12},(_,i)=>{const key=year+'-'+String(i+1).padStart(2,'0'),x=map[key]||{month:key,sales:0,cost:0,profit:0,scoreSum:0,count:0};x.margin=x.sales?x.profit/x.sales*100:0;x.score=x.count?x.scoreSum/x.count:0;return x})}
+function initReportYears(){const select=document.getElementById('reportYear');if(!select)return;const years=[...new Set(records().map(r=>(r.end||r.start||'').slice(0,4)).filter(Boolean))].sort().reverse();const current=String(new Date().getFullYear());if(!years.includes(current))years.unshift(current);const old=select.value;select.innerHTML=years.map(y=>`<option value="${y}">${y}年</option>`).join('');select.value=years.includes(old)?old:years[0]}
+function renderMonthlyReport(){initReportYears();const year=document.getElementById('reportYear').value,data=monthlyData(year),active=data.filter(x=>x.count);const sales=active.reduce((s,x)=>s+x.sales,0),profit=active.reduce((s,x)=>s+x.profit,0),margin=sales?profit/sales*100:0,best=active.slice().sort((a,b)=>b.profit-a.profit)[0];document.getElementById('yearSales').textContent=money(sales);document.getElementById('yearProfit').textContent=money(profit);document.getElementById('yearProfit').className=profit>=0?'green-text':'red-text';document.getElementById('yearMargin').textContent=margin.toFixed(1)+'%';document.getElementById('bestMonth').textContent=best?Number(best.month.slice(5))+'月 '+money(best.profit):'暂无';let prev=null;document.getElementById('monthlyBody').innerHTML=active.length?data.map(x=>{let trend='—',cls='';if(x.count&&prev&&prev.sales){const p=(x.sales-prev.sales)/prev.sales*100;trend=(p>=0?'↑ ':'↓ ')+Math.abs(p).toFixed(1)+'%';cls=p>=0?'trend-up':'trend-down'}if(x.count)prev=x;return `<tr><td>${Number(x.month.slice(5))}月</td><td>${x.count?money(x.sales):'—'}</td><td>${x.count?money(x.cost):'—'}</td><td class="${x.profit>=0?'trend-up':'trend-down'}">${x.count?money(x.profit):'—'}</td><td>${x.count?x.margin.toFixed(1)+'%':'—'}</td><td class="${cls}">${x.count?trend:'—'}</td><td>${x.count?x.score.toFixed(0):'—'}</td></tr>`}).join(''):'<tr><td colspan="7" class="report-empty">暂无该年度数据，请先保存每日或每月经营记录。</td></tr>';let advice='';if(active.length){if(profit<0)advice='<div class="advice bad">年度累计处于亏损状态，建议重点检查毛利率、人工和固定费用。</div>';else if(margin<5)advice='<div class="advice warn">年度累计盈利，但净利率低于5%，现金抗风险能力可能不足。</div>';else advice='<div class="advice good">年度累计盈利，建议继续观察销售和利润是否同步增长。</div>';if(active.length>=2&&active[active.length-1].sales<active[active.length-2].sales)advice+='<div class="advice warn">最近有数据月份的销售额较上月下降，请结合客流、客单价和季节因素分析。</div>'}document.getElementById('reportAdvice').innerHTML=advice;drawMonthlyChart(data)}
+function drawMonthlyChart(data){const canvas=document.getElementById('monthlyChart');if(!canvas)return;const box=canvas.parentElement,ratio=window.devicePixelRatio||1,w=box.clientWidth,h=box.clientHeight;canvas.width=w*ratio;canvas.height=h*ratio;const c=canvas.getContext('2d');c.scale(ratio,ratio);c.clearRect(0,0,w,h);const pad={l:48,r:18,t:18,b:38},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,max=Math.max(1,...data.flatMap(x=>[x.sales,Math.abs(x.profit)]));c.font='10px sans-serif';c.fillStyle='#8a8178';c.strokeStyle='#eee6da';c.lineWidth=1;for(let i=0;i<=4;i++){const y=pad.t+ch*i/4;c.beginPath();c.moveTo(pad.l,y);c.lineTo(w-pad.r,y);c.stroke();const val=max*(1-i/4);c.fillText(val>=10000?(val/10000).toFixed(1)+'万':Math.round(val),3,y+3)}const step=cw/12,bw=Math.max(8,step*.48);data.forEach((x,i)=>{const cx=pad.l+step*i+step/2,bh=x.sales/max*ch;c.fillStyle='#e9a62a';c.fillRect(cx-bw/2,pad.t+ch-bh,bw,bh);c.fillStyle='#8a8178';c.textAlign='center';c.fillText((i+1)+'月',cx,h-14)});c.beginPath();let started=false;data.forEach((x,i)=>{if(!x.count)return;const cx=pad.l+step*i+step/2,py=pad.t+ch-(Math.max(0,x.profit)/max*ch);if(!started){c.moveTo(cx,py);started=true}else c.lineTo(cx,py)});c.strokeStyle='#3974cc';c.lineWidth=2.5;c.stroke();data.forEach((x,i)=>{if(!x.count)return;const cx=pad.l+step*i+step/2,py=pad.t+ch-(Math.max(0,x.profit)/max*ch);c.beginPath();c.arc(cx,py,3.5,0,Math.PI*2);c.fillStyle=x.profit>=0?'#3974cc':'#d1483f';c.fill()});c.textAlign='start'}
+function exportMonthlyCSV(){const year=document.getElementById('reportYear').value,data=monthlyData(year).filter(x=>x.count);if(!data.length){toast('暂无月报数据可导出');return}const rows=[['月份','销售额','总成本','净利润','净利率','平均健康分'],...data.map(x=>[x.month,x.sales,x.cost,x.profit,x.margin,x.score])];const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download=year+'年面包店月度报表.csv';a.click();URL.revokeObjectURL(a.href)}
+
+function go(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.bottom button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');if(id==='records')renderRecords();if(id==='report')setTimeout(renderMonthlyReport,0);window.scrollTo(0,0)}
+function toast(s){const e=document.getElementById('toast');e.textContent=s;e.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove('show'),1700)}
+window.addEventListener('resize',()=>{if(document.getElementById('report').classList.contains('active'))drawMonthlyChart(monthlyData(document.getElementById('reportYear').value))});
+inputIds.forEach(id=>document.getElementById(id).addEventListener('input',calculate));const ds=dates();document.getElementById('startDate').value=ds[0];document.getElementById('endDate').value=ds[1];calculate();renderRecords();
+</script>
+</body></html>
